@@ -17,13 +17,13 @@ const GameGrid = () => {
         rowGap={"4"}>
         {isLoading &&
           skeletons.map((skeleton) => (
-            <GameCardContainer>
-              <GameCardSkeleton key={skeleton} />
+            <GameCardContainer key={skeleton}>
+              <GameCardSkeleton />
             </GameCardContainer>
           ))}
         {games.map((game) => (
-          <GameCardContainer>
-            <GameCards key={game.id} game={game} />
+          <GameCardContainer key={game.id}>
+            <GameCards game={game} />
           </GameCardContainer>
         ))}
       </SimpleGrid>
