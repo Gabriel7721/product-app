@@ -9,11 +9,13 @@ import type { Genre } from "./hooks/useGenres";
 
 export interface GameQuery {
   platform: Platform | null;
+  genre: Genre | null;
+  sortOrder: string;
+  searchText: string;
 }
 
 const App = () => {
   const [gameQuery, setGameQuery] = useState<GameQuery>({} as GameQuery);
-  const [selectedGenre, setSelectedGenre] = useState<Genre | null>(null);
 
   return (
     <Grid
@@ -27,8 +29,8 @@ const App = () => {
           bg={"#"}
           display={{ base: "none", lg: "block" }}>
           <GenreList
-            onSelectedGenre={setSelectedGenre}
-            selectedGenre={selectedGenre}
+            onSelectedGenre={(genre) => setGameQuery({ ...gameQuery, genre })}
+            selectedGenre={gameQuery.genre}
           />
         </GridItem>
       </Show>
